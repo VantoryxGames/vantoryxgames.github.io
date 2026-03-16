@@ -1,71 +1,81 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const DEFAULT_LANG = 'en';
+    const DEFAULT_THEME = 'dark';
+
+    const getStoredValue = (key, defaultValue) => localStorage.getItem(key) || defaultValue;
+    const setStoredValue = (key, value) => localStorage.setItem(key, value);
+
     const themeToggleBtn = document.getElementById('theme-toggle');
+    const langToggleBtn = document.getElementById('lang-toggle');
     const body = document.body;
 
-    themeToggleBtn.addEventListener('click', () => {
-        if (body.getAttribute('data-theme') === 'dark') {
-            body.setAttribute('data-theme', 'light');
-            themeToggleBtn.textContent = '🌙';
-        } else {
-            body.setAttribute('data-theme', 'dark');
-            themeToggleBtn.textContent = '☀️';
-        }
-    });
-
-    const langToggleBtn = document.getElementById('lang-toggle');
-    let currentLang = 'en';
+    let currentLang = getStoredValue('userLanguage', DEFAULT_LANG);
+    let currentTheme = getStoredValue('userTheme', DEFAULT_THEME);
 
     const translations = {
         tr: {
-            nav_games: "Oyunlar",
-            nav_about: "Hakkımda",
-            hero_title: "Vantoryx Games'e Hoş Geldiniz",
-            hero_desc: "Hız, hassasiyet ve çığır açan deneyimlerin buluşma noktası.",
-            section_games: "Oyunlarımız",
-            ram_desc: "RAM Survivor, hız ve hassasiyetin önemli olduğu, hızlı tempolu, retro tarzı bir arcade tıklama oyunudur. RAM'iniz %100'e ulaşmadan önce virüslü pencereleri kapatın. Para kazanın, donanımınızı yükseltin ve mümkün olduğunca uzun süre hayatta kalın.",
-            oms_desc: "One More Step, hassas oynanışı çarpıcı görsel efektlerle birleştiren çığır açan bir 2D platform oyunu deneyimidir. Bu sadece bir platform oyunu değil; becerilerinizi son sınırlarına kadar zorlayacak ve sizi tekrar tekrar oynamaya teşvik edecek, özenle hazırlanmış bir meydan okuma!",
+            nav_games: "Oyunları Keşfet",
+            nav_about: "Geliştirici",
+            lang_btn: "🌐 EN",
+            hero_title: "Zorluk ve Hassasiyetin Buluştuğu Yer",
+            hero_desc: "Becerilerinizi sonuna kadar zorlayan, el yapımı bağımsız deneyimleri keşfedin.",
+            section_games: "Yaratımlarımız",
+            ram_desc: "Hız ve hassasiyetin önemli olduğu, hızlı tempolu, retro tarzı bir arcade tıklama oyunu. RAM'iniz %100'e ulaşmadan önce virüslü pencereleri kapatın. Para kazanın, donanımınızı yükseltin ve mümkün olduğunca uzun süre hayatta kalın.",
+            oms_desc: "Hassas oynanışı çarpıcı görsel efektlerle birleştiren çığır açan bir 2D platform oyunu deneyimi. Bu sadece bir platform oyunu değil; becerilerinizi son sınırlarına kadar zorlayacak ve sizi tekrar tekrar oynamaya teşvik edecek, özenle hazırlanmış bir meydan okuma!",
             btn_itchio: "itch.io'da İncele",
-            section_about: "Hakkımda",
-            about_p1: "Merhaba, ben <strong>Cengiz Kara</strong>. 17 yaşındayım ve bağımsız bir yazılım/oyun geliştiricisiyim.",
-            about_p2: "Vantoryx Games çatısı altında oyuncuları zorlayan, retro dokunuşlara sahip ve eğlenceli mekanikler barındıran oyunlar geliştiriyorum. HTML, CSS ve JavaScript gibi web teknolojilerinin yanı sıra çeşitli oyun motorlarıyla projeler üretiyorum. Amacım, oynanışın her zaman ön planda olduğu unutulmaz deneyimler yaratmak.",
-            footer: "© 2026 Vantoryx Games. Tüm hakları saklıdır."
+            section_about: "Yaratıcı Hakkında",
+            about_p1: "Merhaba, ben <strong>Cengiz Kara</strong>, 17 yaşında, tutkulu, bağımsız bir yazılım ve oyun geliştiricisiyim.",
+            about_p2: "Vantoryx Games çatısı altında, retro dokunuşlara sahip ve ilgi çekici mekanikler barındıran zorlu oyunlar geliştiriyorum. Unutulmaz deneyimler yaratmak için HTML, CSS, JavaScript ve özel oyun motorları gibi çeşitli araçlar kullanıyorum ve her zaman oynanışa odaklanıyorum.",
+            footer: "© 2026 Vantoryx Games. Tüm hakları saklıdır. Cengiz Kara tarafından hazırlanmıştır."
         },
         en: {
-            nav_games: "Games",
-            nav_about: "About Me",
-            hero_title: "Welcome to Vantoryx Games",
-            hero_desc: "Where speed, precision, and groundbreaking experiences meet.",
-            section_games: "Our Games",
-            ram_desc: "RAM Survivor is a fast-paced, retro-style arcade clicker where speed and precision matter. Close infected windows before your RAM reaches 100%. Earn money, upgrade your hardware, and survive as long as possible.",
-            oms_desc: "One More Step is a groundbreaking 2D platformer experience combining precise gameplay with stunning visual effects. It's not just a platformer; it's a carefully crafted challenge that will push your skills to the limit and keep you coming back!",
+            nav_games: "Explore Games",
+            nav_about: "The Developer",
+            lang_btn: "🌐 TR",
+            hero_title: "Where Challenge Meets Precision",
+            hero_desc: "Explore handcrafted indie experiences that push your skills to the limit.",
+            section_games: "Our Creations",
+            ram_desc: "A fast-paced, retro-style arcade clicker where speed and precision matter. Close infected windows before your RAM reaches 100%. Earn money, upgrade your hardware, and survive as long as possible.",
+            oms_desc: "A groundbreaking 2D platformer experience combining precise gameplay with stunning visual effects. It's not just a platformer; it's a carefully crafted challenge that will push your skills to the limit and keep you coming back!",
             btn_itchio: "View on itch.io",
-            section_about: "About Me",
-            about_p1: "Hello, I'm <strong>Cengiz Kara</strong>. I'm 17 years old and an independent software/game developer.",
-            about_p2: "Under the roof of Vantoryx Games, I develop challenging games with retro touches and fun mechanics. I create projects using various game engines as well as web technologies like HTML, CSS, and JavaScript. My goal is to create unforgettable experiences where gameplay is always at the forefront.",
-            footer: "© 2026 Vantoryx Games. All rights reserved."
+            section_about: "About the Creator",
+            about_p1: "Hello, I'm <strong>Cengiz Kara</strong>, a 17-year-old passionate independent software and game developer.",
+            about_p2: "Under the Vantoryx Games banner, I craft challenging games with retro touches and engaging mechanics. I leverage a variety of tools, including HTML, CSS, JavaScript, and specialized game engines, to create unforgettable experiences where gameplay is always the focus.",
+            footer: "© 2026 Vantoryx Games. All rights reserved. Crafted by Cengiz Kara."
         }
     };
 
-    function updateLanguage(lang) {
-        const elements = document.querySelectorAll('[data-i18n]');
-        elements.forEach(el => {
+    const updatePageLanguage = (lang) => {
+        document.documentElement.lang = lang;
+        setStoredValue('userLanguage', lang);
+        
+        document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (translations[lang][key]) {
-                el.innerHTML = translations[lang][key]; 
+                el.innerHTML = translations[lang][key];
             }
         });
-    }
+
+        langToggleBtn.querySelector('.btn-text').textContent = translations[lang]['lang_btn'];
+    };
+
+    const updatePageTheme = (theme) => {
+        body.setAttribute('data-theme', theme);
+        setStoredValue('userTheme', theme);
+        
+        themeToggleBtn.querySelector('.btn-icon').textContent = (theme === 'dark' ? '☀️' : '🌙');
+    };
+
+    updatePageLanguage(currentLang);
+    updatePageTheme(currentTheme);
 
     langToggleBtn.addEventListener('click', () => {
-        if (currentLang === 'en') {
-            currentLang = 'tr';
-            langToggleBtn.innerHTML = '🌐 EN';
-            document.documentElement.lang = 'tr';
-        } else {
-            currentLang = 'en';
-            langToggleBtn.innerHTML = '🌐 TR';
-            document.documentElement.lang = 'en';
-        }
-        updateLanguage(currentLang);
+        currentLang = (currentLang === 'en' ? 'tr' : 'en');
+        updatePageLanguage(currentLang);
+    });
+
+    themeToggleBtn.addEventListener('click', () => {
+        currentTheme = (currentTheme === 'dark' ? 'light' : 'dark');
+        updatePageTheme(currentTheme);
     });
 });
