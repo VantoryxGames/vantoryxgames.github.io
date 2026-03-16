@@ -350,3 +350,8 @@ footer {
     }
     .about-flex {
         flex-direction: column;
+    }
+    .game-card.is-shifted {
+        margin-top: 0;
+    }
+}
