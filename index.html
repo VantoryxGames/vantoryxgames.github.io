@@ -3,21 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vantoryx Games</title>
+    <title>Vantoryx Games - Bespoke Indie Games</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body data-theme="dark">
+    <div class="bg-pattern"></div>
     <div class="bg-glow"></div>
 
     <header>
         <div class="container header-content">
-            <h1 class="logo">Vantoryx <span>Games</span></h1>
+            <h1 class="logo">Vantoryx<span class="logo-accent">Games</span></h1>
             <nav>
-                <a href="#games" data-i18n="nav_games">Games</a>
-                <a href="#about" data-i18n="nav_about">About Me</a>
+                <div class="nav-links">
+                    <a href="#games" data-i18n="nav_games">Explore Games</a>
+                    <a href="#about" data-i18n="nav_about">The Developer</a>
+                </div>
                 <div class="controls">
-                    <button id="lang-toggle" class="icon-btn">🌐 TR</button>
-                    <button id="theme-toggle" class="icon-btn">☀️</button>
+                    <button id="lang-toggle" class="control-btn" aria-label="Toggle Language">
+                        <span class="btn-text">🌐 TR</span>
+                    </button>
+                    <button id="theme-toggle" class="control-btn" aria-label="Toggle Theme">
+                        <span class="btn-icon">☀️</span>
+                    </button>
                 </div>
             </nav>
         </div>
@@ -25,44 +33,55 @@
 
     <main class="container">
         <section class="hero">
-            <h2 data-i18n="hero_title">Welcome to Vantoryx Games</h2>
-            <p data-i18n="hero_desc">Where speed, precision, and groundbreaking experiences meet.</p>
+            <h2 data-i18n="hero_title">Where Challenge Meets Precision</h2>
+            <p data-i18n="hero_desc">Explore handcrafted indie experiences that push your skills to the limit.</p>
         </section>
 
         <section id="games" class="games-section">
-            <h2 class="section-title" data-i18n="section_games">Our Games</h2>
-            <div class="games-grid">
+            <h2 class="section-title" data-i18n="section_games">Our Creations</h2>
+            <div class="games-staggered-grid">
                 <div class="game-card">
-                    <div class="card-glow"></div>
+                    <div class="card-image-placeholder">
+                        <span class="card-icon">🕹️</span>
+                    </div>
                     <div class="card-content">
                         <h3>RAM Survivor</h3>
-                        <p data-i18n="ram_desc">RAM Survivor is a fast-paced, retro-style arcade clicker where speed and precision matter. Close infected windows before your RAM reaches 100%. Earn money, upgrade your hardware, and survive as long as possible.</p>
-                        <a href="#" class="itchio-btn" target="_blank" data-i18n="btn_itchio">View on itch.io</a>
+                        <p data-i18n="ram_desc">A fast-paced, retro-style arcade clicker where speed and precision matter. Close infected windows before your RAM reaches 100%. Earn money, upgrade your hardware, and survive as long as possible.</p>
+                        <a href="LINK_TO_RAM_SURVIVOR_ITCHIO" class="itchio-btn" target="_blank" data-i18n="btn_itchio">View on itch.io</a>
                     </div>
                 </div>
 
-                <div class="game-card">
-                    <div class="card-glow"></div>
+                <div class="game-card is-shifted">
+                    <div class="card-image-placeholder">
+                        <span class="card-icon">👟</span>
+                    </div>
                     <div class="card-content">
                         <h3>One More Step</h3>
-                        <p data-i18n="oms_desc">One More Step is a groundbreaking 2D platformer experience combining precise gameplay with stunning visual effects. It's not just a platformer; it's a carefully crafted challenge that will push your skills to the limit and keep you coming back!</p>
-                        <a href="#" class="itchio-btn" target="_blank" data-i18n="btn_itchio">View on itch.io</a>
+                        <p data-i18n="oms_desc">A groundbreaking 2D platformer experience combining precise gameplay with stunning visual effects. It's not just a platformer; it's a carefully crafted challenge that will push your skills to the limit and keep you coming back!</p>
+                        <a href="LINK_TO_ONE_MORE_STEP_ITCHIO" class="itchio-btn" target="_blank" data-i18n="btn_itchio">View on itch.io</a>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="about" class="about-section">
-            <h2 class="section-title" data-i18n="section_about">About Me</h2>
-            <div class="about-content">
-                <p data-i18n="about_p1">Hello, I'm <strong>Cengiz Kara</strong>. I'm 17 years old and an independent software/game developer.</p>
-                <p data-i18n="about_p2">Under the roof of Vantoryx Games, I develop challenging games with retro touches and fun mechanics. I create projects using various game engines as well as web technologies like HTML, CSS, and JavaScript. My goal is to create unforgettable experiences where gameplay is always at the forefront.</p>
+            <h2 class="section-title" data-i18n="section_about">About the Creator</h2>
+            <div class="about-flex">
+                <div class="profile-frame">
+                    <div class="profile-placeholder">CK</div>
+                </div>
+                <div class="about-text-frame">
+                    <p data-i18n="about_p1">Hello, I'm <strong>Cengiz Kara</strong>, a 17-year-old passionate independent software and game developer.</p>
+                    <p data-i18n="about_p2">Under the Vantoryx Games banner, I craft challenging games with retro touches and engaging mechanics. I leverage a variety of tools, including HTML, CSS, JavaScript, and specialized game engines, to create unforgettable experiences where gameplay is always the focus.</p>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p data-i18n="footer">&copy; 2026 Vantoryx Games. All rights reserved.</p>
+        <div class="container footer-content">
+            <p data-i18n="footer">&copy; 2026 Vantoryx Games. All rights reserved. Crafted by Cengiz Kara.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
