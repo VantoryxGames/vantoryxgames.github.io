@@ -1,199 +1,71 @@
-class ChristmasWebsite {
-    constructor() {
-        this.init();
-    }
-
-    init() {
-        this.createSnow();
-        this.setupMobileMenu();
-        this.setupScrollEffects();
-        this.setupAnimations();
-        this.setupSmoothScroll();
-        this.setupConsoleGreeting();
-    }
-
-    createSnow() {
-        const container = document.getElementById('snow-container');
-        const snowflakes = ['❄', '❅', '❆', '•', '*'];
-        
-        for (let i = 0; i < 50; i++) {
-            setTimeout(() => this.createSnowflake(container, snowflakes), i * 100);
-        }
-        
-        setInterval(() => this.createSnowflake(container, snowflakes), 150);
-    }
-
-    createSnowflake(container, snowflakes) {
-        const flake = document.createElement('div');
-        flake.classList.add('snowflake');
-        flake.textContent = snowflakes[Math.floor(Math.random() * snowflakes.length)];
-        
-        const size = 10 + Math.random() * 25;
-        const startX = Math.random() * window.innerWidth;
-        const duration = 5 + Math.random() * 10;
-        const delay = Math.random() * 5;
-        
-        flake.style.left = startX + 'px';
-        flake.style.fontSize = size + 'px';
-        flake.style.opacity = 0.5 + Math.random() * 0.5;
-        flake.style.color = `rgba(255, 255, 255, ${0.7 + Math.random() * 0.3})`;
-        
-        const endX = startX + (Math.random() * 200 - 100);
-        const endY = window.innerHeight + 50;
-        
-        flake.style.animation = `snowFall ${duration}s linear ${delay}s forwards`;
-        
-        if (!document.getElementById('snow-animation')) {
-            const style = document.createElement('style');
-            style.id = 'snow-animation';
-            style.textContent = `
-                @keyframes snowFall {
-                    0% {
-                        transform: translate(0, -10px) rotate(0deg);
-                        opacity: 0.8;
-                    }
-                    100% {
-                        transform: translate(${endX - startX}px, ${endY}px) rotate(${Math.random() * 360}deg);
-                        opacity: 0;
-                    }
-                }
-            `;
-            document.head.appendChild(style);
-        }
-        
-        container.appendChild(flake);
-        
-        setTimeout(() => {
-            if (flake.parentNode) flake.remove();
-        }, (duration + delay) * 1000);
-    }
-
-    setupMobileMenu() {
-        const menuBtn = document.querySelector('.mobile-menu-btn');
-        const navList = document.querySelector('.nav-list');
-        
-        if (menuBtn && navList) {
-            menuBtn.addEventListener('click', () => {
-                navList.classList.toggle('active');
-                menuBtn.innerHTML = navList.classList.contains('active') ? 
-                    '<i class="fas fa-times"></i>' : 
-                    '<i class="fas fa-bars"></i>';
-            });
-
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.addEventListener('click', () => {
-                    navList.classList.remove('active');
-                    menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                });
-            });
-        }
-
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768 && navList) {
-                navList.classList.remove('active');
-                if (menuBtn) menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-            }
-        });
-    }
-
-    setupScrollEffects() {
-        const header = document.querySelector('.main-header');
-        
-        if (header) {
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 100) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            });
-        }
-    }
-
-    setupAnimations() {
-        const cards = document.querySelectorAll('.feature-card, .character-card, .platform-card, .connect-card, .about-card');
-        
-        cards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.zIndex = '10';
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                setTimeout(() => {
-                    card.style.zIndex = '';
-                }, 300);
-            });
-        });
-
-        const tree = document.querySelector('.christmas-tree');
-        if (tree) {
-            tree.addEventListener('click', () => {
-                tree.style.animation = 'none';
-                setTimeout(() => {
-                    tree.style.animation = 'treeFloat 6s ease-in-out infinite';
-                }, 10);
-            });
-        }
-    }
-
-    setupSmoothScroll() {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            if (!anchor.hasAttribute('target')) {
-                anchor.addEventListener('click', (e) => {
-                    const targetId = anchor.getAttribute('href');
-                    if (targetId === '#' || targetId.startsWith('http')) return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        e.preventDefault();
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            }
-        });
-    }
-
-    setupConsoleGreeting() {
-        const greeting = `%c🎄 Merry Christmas from Vantoryx Games! 🎁%c%cMay your holidays be filled with adventure and joy!%cExplore Granty Dude Streets I this holiday season!`;
-        const styles = [
-            'color: #e63946; font-size: 18px; font-weight: bold;',
-            '',
-            'color: #2a9d8f; font-size: 14px;',
-            'color: #f4a261; font-size: 14px; font-style: italic;'
-        ];
-        console.log(greeting, ...styles);
-    }
-}
-
 document.addEventListener('DOMContentLoaded', () => {
-    new ChristmasWebsite();
-    
-    const sections = document.querySelectorAll('.section');
-    sections.forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(20px)';
-        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    });
-    
-    setTimeout(() => {
-        sections.forEach((section, index) => {
-            setTimeout(() => {
-                section.style.opacity = '1';
-                section.style.transform = 'translateY(0)';
-            }, index * 100);
-        });
-    }, 500);
-});
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
 
-window.addEventListener('resize', () => {
-    const snowflakes = document.querySelectorAll('.snowflake');
-    snowflakes.forEach(flake => {
-        const currentTop = parseInt(flake.style.top) || 0;
-        if (currentTop > window.innerHeight) {
-            flake.remove();
+    themeToggleBtn.addEventListener('click', () => {
+        if (body.getAttribute('data-theme') === 'dark') {
+            body.setAttribute('data-theme', 'light');
+            themeToggleBtn.textContent = '🌙';
+        } else {
+            body.setAttribute('data-theme', 'dark');
+            themeToggleBtn.textContent = '☀️';
         }
+    });
+
+    const langToggleBtn = document.getElementById('lang-toggle');
+    let currentLang = 'en';
+
+    const translations = {
+        tr: {
+            nav_games: "Oyunlar",
+            nav_about: "Hakkımda",
+            hero_title: "Vantoryx Games'e Hoş Geldiniz",
+            hero_desc: "Hız, hassasiyet ve çığır açan deneyimlerin buluşma noktası.",
+            section_games: "Oyunlarımız",
+            ram_desc: "RAM Survivor, hız ve hassasiyetin önemli olduğu, hızlı tempolu, retro tarzı bir arcade tıklama oyunudur. RAM'iniz %100'e ulaşmadan önce virüslü pencereleri kapatın. Para kazanın, donanımınızı yükseltin ve mümkün olduğunca uzun süre hayatta kalın.",
+            oms_desc: "One More Step, hassas oynanışı çarpıcı görsel efektlerle birleştiren çığır açan bir 2D platform oyunu deneyimidir. Bu sadece bir platform oyunu değil; becerilerinizi son sınırlarına kadar zorlayacak ve sizi tekrar tekrar oynamaya teşvik edecek, özenle hazırlanmış bir meydan okuma!",
+            btn_itchio: "itch.io'da İncele",
+            section_about: "Hakkımda",
+            about_p1: "Merhaba, ben <strong>Cengiz Kara</strong>. 17 yaşındayım ve bağımsız bir yazılım/oyun geliştiricisiyim.",
+            about_p2: "Vantoryx Games çatısı altında oyuncuları zorlayan, retro dokunuşlara sahip ve eğlenceli mekanikler barındıran oyunlar geliştiriyorum. HTML, CSS ve JavaScript gibi web teknolojilerinin yanı sıra çeşitli oyun motorlarıyla projeler üretiyorum. Amacım, oynanışın her zaman ön planda olduğu unutulmaz deneyimler yaratmak.",
+            footer: "© 2026 Vantoryx Games. Tüm hakları saklıdır."
+        },
+        en: {
+            nav_games: "Games",
+            nav_about: "About Me",
+            hero_title: "Welcome to Vantoryx Games",
+            hero_desc: "Where speed, precision, and groundbreaking experiences meet.",
+            section_games: "Our Games",
+            ram_desc: "RAM Survivor is a fast-paced, retro-style arcade clicker where speed and precision matter. Close infected windows before your RAM reaches 100%. Earn money, upgrade your hardware, and survive as long as possible.",
+            oms_desc: "One More Step is a groundbreaking 2D platformer experience combining precise gameplay with stunning visual effects. It's not just a platformer; it's a carefully crafted challenge that will push your skills to the limit and keep you coming back!",
+            btn_itchio: "View on itch.io",
+            section_about: "About Me",
+            about_p1: "Hello, I'm <strong>Cengiz Kara</strong>. I'm 17 years old and an independent software/game developer.",
+            about_p2: "Under the roof of Vantoryx Games, I develop challenging games with retro touches and fun mechanics. I create projects using various game engines as well as web technologies like HTML, CSS, and JavaScript. My goal is to create unforgettable experiences where gameplay is always at the forefront.",
+            footer: "© 2026 Vantoryx Games. All rights reserved."
+        }
+    };
+
+    function updateLanguage(lang) {
+        const elements = document.querySelectorAll('[data-i18n]');
+        elements.forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang][key]) {
+                el.innerHTML = translations[lang][key]; 
+            }
+        });
+    }
+
+    langToggleBtn.addEventListener('click', () => {
+        if (currentLang === 'en') {
+            currentLang = 'tr';
+            langToggleBtn.innerHTML = '🌐 EN';
+            document.documentElement.lang = 'tr';
+        } else {
+            currentLang = 'en';
+            langToggleBtn.innerHTML = '🌐 TR';
+            document.documentElement.lang = 'en';
+        }
+        updateLanguage(currentLang);
     });
 });
