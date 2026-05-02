@@ -3,46 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vantoryx Games</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>Vantoryx Games | Retro-Inspired Handcrafted Games</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="dark-theme">
 
+    <!-- Animated Grid Background -->
+    <div class="grid-bg"></div>
+    
+    <!-- Floating Orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
     <nav class="navbar">
-        <div class="logo">Vantoryx<span>Games</span></div>
+        <div class="logo">
+            Vantoryx<span>Games</span>
+        </div>
         <div class="nav-actions">
-            <button id="langBtn" class="action-btn">TR</button>
-            <button id="themeBtn" class="action-btn">☀️</button>
+            <button id="langBtn" class="action-btn" aria-label="Dil değiştir">
+                <span class="btn-content">TR</span>
+                <span class="btn-glow"></span>
+            </button>
+            <button id="themeBtn" class="action-btn" aria-label="Tema değiştir">
+                <span class="btn-content">☀️</span>
+                <span class="btn-glow"></span>
+            </button>
         </div>
     </nav>
 
     <header class="hero">
-        <h1 data-en="Precision Meets Challenge." data-tr="Hassasiyet ve Zorluk.">Precision Meets Challenge.</h1>
-        <p data-en="We develop retro-inspired, handcrafted games that will push your skills to the absolute limit." data-tr="Becerilerinizi sonuna kadar zorlayacak, retro esintili, el yapımı oyunlar geliştiriyoruz.">We develop retro-inspired, handcrafted games that will push your skills to the absolute limit.</p>
+        <div class="hero-badge">
+            <span class="badge-dot"></span>
+            INDIE GAME STUDIO
+        </div>
+        <h1 class="hero-title" data-en="Precision Meets Challenge." data-tr="Hassasiyet ve Zorluk.">
+            Precision <span class="gradient-text">Meets</span> Challenge.
+        </h1>
+        <p class="hero-subtitle" data-en="We develop retro-inspired, handcrafted games that will push your skills to the absolute limit." data-tr="Becerilerinizi sonuna kadar zorlayacak, retro esintili, el yapımı oyunlar geliştiriyoruz.">
+            We develop retro-inspired, handcrafted games that will push your skills to the absolute limit.
+        </p>
+        <div class="hero-cta">
+            <a href="#games" class="cta-btn">
+                <span>Explore Games</span>
+                <i class="fas fa-arrow-down"></i>
+            </a>
+        </div>
     </header>
 
-    <section class="games">
+    <section class="games" id="games">
+        <div class="section-header">
+            <span class="section-tag">🎮 OUR GAMES</span>
+            <h2 class="section-title">Handcrafted <span class="gradient-text">Experiences</span></h2>
+            <p class="section-desc">Each game is a labor of love, designed to challenge and delight.</p>
+        </div>
+        
         <div class="game-card">
-            <h2 class="game-title">RAM Survivor</h2>
-            <p class="game-desc" data-en="A fast-paced, retro-style arcade clicker. Close infected windows before your RAM reaches 100%. Earn money, upgrade your hardware, and survive." data-tr="Hızlı tempolu, retro tarzı arcade tıklama oyunu. RAM'iniz %100 olmadan virüslü pencereleri kapatın. Para kazanın, donanımınızı yükseltin ve hayatta kalın.">A fast-paced, retro-style arcade clicker. Close infected windows before your RAM reaches 100%. Earn money, upgrade your hardware, and survive.</p>
-            <a href="https://cengizkara.itch.io/ram-survivor" target="_blank" class="play-btn" data-en="Play on itch.io" data-tr="itch.io'da İncele">Play on itch.io</a>
+            <div class="card-glow"></div>
+            <div class="card-number">01</div>
+            <div class="card-image">
+                <div class="card-emoji">🖥️</div>
+                <div class="card-platform">PC</div>
+            </div>
+            <div class="card-content">
+                <div class="game-tags">
+                    <span>Arcade</span>
+                    <span>Clicker</span>
+                    <span>Retro</span>
+                </div>
+                <h2 class="game-title">RAM Survivor</h2>
+                <p class="game-desc" data-en="A fast-paced, retro-style arcade clicker. Close infected windows before your RAM reaches 100%. Earn money, upgrade your hardware, and survive." data-tr="Hızlı tempolu, retro tarzı arcade tıklama oyunu. RAM'iniz %100 olmadan virüslü pencereleri kapatın. Para kazanın, donanımınızı yükseltin ve hayatta kalın.">
+                    A fast-paced, retro-style arcade clicker. Close infected windows before your RAM reaches 100%.
+                </p>
+                <div class="card-stats">
+                    <div class="stat">
+                        <span class="stat-value">100%</span>
+                        <span class="stat-label">Free</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">4.8</span>
+                        <span class="stat-label">Rating</span>
+                    </div>
+                </div>
+                <a href="https://cengizkara.itch.io/ram-survivor" target="_blank" class="play-btn">
+                    <span class="btn-text" data-en="Play Now" data-tr="Hemen Oyna">Play Now</span>
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
         </div>
 
-        <div class="game-card">
-            <h2 class="game-title">One More Step</h2>
-            <p class="game-desc" data-en="A groundbreaking 2D platformer combining precise gameplay with stunning visual effects. A carefully crafted challenge that will keep you coming back." data-tr="Hassas oynanışı çarpıcı görsellerle birleştiren 2D platform oyunu. Sizi tekrar oynamaya teşvik edecek, özenle hazırlanmış bir meydan okuma.">A groundbreaking 2D platformer combining precise gameplay with stunning visual effects. A carefully crafted challenge that will keep you coming back.</p>
-            <a href="https://cengizkara.itch.io/one-more-step" target="_blank" class="play-btn" data-en="Play on itch.io" data-tr="itch.io'da İncele">Play on itch.io</a>
+        <div class="game-card reversed">
+            <div class="card-glow"></div>
+            <div class="card-number">02</div>
+            <div class="card-image">
+                <div class="card-emoji">🎯</div>
+                <div class="card-platform">PC</div>
+            </div>
+            <div class="card-content">
+                <div class="game-tags">
+                    <span>Platformer</span>
+                    <span>Precision</span>
+                    <span>2D</span>
+                </div>
+                <h2 class="game-title">One More Step</h2>
+                <p class="game-desc" data-en="A groundbreaking 2D platformer combining precise gameplay with stunning visual effects. A carefully crafted challenge that will keep you coming back." data-tr="Hassas oynanışı çarpıcı görsellerle birleştiren 2D platform oyunu. Sizi tekrar oynamaya teşvik edecek, özenle hazırlanmış bir meydan okuma.">
+                    A groundbreaking 2D platformer combining precise gameplay with stunning visual effects.
+                </p>
+                <div class="card-stats">
+                    <div class="stat">
+                        <span class="stat-value">Free</span>
+                        <span class="stat-label">Demo</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">NEW</span>
+                        <span class="stat-label">Release</span>
+                    </div>
+                </div>
+                <a href="https://cengizkara.itch.io/one-more-step" target="_blank" class="play-btn">
+                    <span class="btn-text" data-en="Play Now" data-tr="Hemen Oyna">Play Now</span>
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
         </div>
     </section>
 
     <section class="about">
-        <h2 data-en="The Developer" data-tr="Geliştirici">The Developer</h2>
-        <p data-en="I'm Cengiz Kara, a 17-year-old independent software and game developer. Under the Vantoryx Games banner, I craft unforgettable experiences using HTML, CSS, JavaScript, and various game engines where gameplay is always the focus." data-tr="Ben Cengiz Kara, 17 yaşında bağımsız bir yazılım ve oyun geliştiricisiyim. Vantoryx Games altında HTML, CSS, JS ve çeşitli oyun motorları kullanarak, oynanışın her zaman ön planda olduğu unutulmaz deneyimler üretiyorum.">I'm Cengiz Kara, a 17-year-old independent software and game developer. Under the Vantoryx Games banner, I craft unforgettable experiences using HTML, CSS, JavaScript, and various game engines where gameplay is always the focus.</p>
+        <div class="about-container">
+            <div class="about-image">
+                <div class="about-avatar">👨‍💻</div>
+                <div class="about-status">Available</div>
+            </div>
+            <div class="about-content">
+                <span class="section-tag">👨‍💻 THE DEVELOPER</span>
+                <h2 data-en="Meet Cengiz Kara" data-tr="Cengiz Kara ile Tanış">Meet Cengiz Kara</h2>
+                <p data-en="I'm Cengiz Kara, a 17-year-old independent software and game developer. Under the Vantoryx Games banner, I craft unforgettable experiences using HTML, CSS, JavaScript, and various game engines where gameplay is always the focus." data-tr="Ben Cengiz Kara, 17 yaşında bağımsız bir yazılım ve oyun geliştiricisiyim. Vantoryx Games altında HTML, CSS, JS ve çeşitli oyun motorları kullanarak, oynanışın her zaman ön planda olduğu unutulmaz deneyimler üretiyorum.">
+                    I'm Cengiz Kara, a 17-year-old independent software and game developer.
+                </p>
+                <div class="skills">
+                    <span>HTML5</span>
+                    <span>CSS3</span>
+                    <span>JavaScript</span>
+                    <span>Unity</span>
+                    <span>Godot</span>
+                </div>
+            </div>
+        </div>
     </section>
 
     <footer>
-        <p>© 2026 Vantoryx Games. Crafted by Cengiz Kara.</p>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo">Vantoryx<span>Games</span></div>
+                <p>Crafting unforgettable gaming experiences.</p>
+            </div>
+            <div class="footer-links">
+                <a href="https://cengizkara.itch.io/"><i class="fab fa-itch-io"></i> itch.io</a>
+                <a href="https://github.com/CengizzKara"><i class="fab fa-github"></i> GitHub</a>
+                <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Vantoryx Games. Crafted with by Cengiz Kara.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
