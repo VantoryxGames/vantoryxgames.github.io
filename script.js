@@ -1,15 +1,14 @@
-// DOM Elements
 const themeBtn = document.getElementById('themeBtn');
 const langBtn = document.getElementById('langBtn');
 const elementsToTranslate = document.querySelectorAll('[data-en]');
 const cursor = document.querySelector('.cursor');
 const cursorFollower = document.querySelector('.cursor-follower');
 
-// State
+
 let isDark = true;
 let isEnglish = true;
 
-// Custom Cursor
+
 if (cursor && cursorFollower) {
     document.addEventListener('mousemove', (e) => {
         cursor.style.left = e.clientX + 'px';
@@ -21,7 +20,7 @@ if (cursor && cursorFollower) {
         }, 50);
     });
 
-    // Hover effect on clickable elements
+    
     const clickables = document.querySelectorAll('a, button, .play-btn, .action-btn, .cta-btn');
     clickables.forEach(el => {
         el.addEventListener('mouseenter', () => {
@@ -41,7 +40,7 @@ if (cursor && cursorFollower) {
     });
 }
 
-// Theme Toggle
+
 themeBtn.addEventListener('click', () => {
     isDark = !isDark;
     
@@ -53,19 +52,19 @@ themeBtn.addEventListener('click', () => {
         themeBtn.querySelector('.btn-content').textContent = '🌙';
     }
     
-    // Button animation
+    
     themeBtn.style.transform = 'scale(0.9)';
     setTimeout(() => {
         themeBtn.style.transform = 'scale(1)';
     }, 150);
 });
 
-// Language Toggle
+
 langBtn.addEventListener('click', () => {
     isEnglish = !isEnglish;
     langBtn.querySelector('.btn-content').textContent = isEnglish ? 'TR' : 'EN';
     
-    // Staggered text transition
+    
     elementsToTranslate.forEach((el, index) => {
         setTimeout(() => {
             el.style.opacity = '0';
@@ -86,19 +85,19 @@ langBtn.addEventListener('click', () => {
         }, index * 30);
     });
     
-    // Button animation
+    
     langBtn.style.transform = 'scale(0.9)';
     setTimeout(() => {
         langBtn.style.transform = 'scale(1)';
     }, 150);
 });
 
-// Add smooth transition to translatable elements
+
 elementsToTranslate.forEach(el => {
     el.style.transition = 'opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease';
 });
 
-// Scroll animations
+
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -112,13 +111,13 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe game cards and about section
+
 document.querySelectorAll('.game-card, .about-container').forEach(el => {
     observer.observe(el);
     el.style.transition = 'opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease, border-color 0.5s ease';
 });
 
-// Smooth scroll for anchor links
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -132,7 +131,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar scroll effect
+
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     const scrollY = window.scrollY;
@@ -146,7 +145,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Parallax effect for orbs
+
 document.addEventListener('mousemove', (e) => {
     const mouseX = (e.clientX / window.innerWidth - 0.5) * 20;
     const mouseY = (e.clientY / window.innerHeight - 0.5) * 20;
@@ -157,9 +156,9 @@ document.addEventListener('mousemove', (e) => {
     });
 });
 
-// Initialize animations on page load
+
 window.addEventListener('load', () => {
-    // Trigger initial animations for visible elements
+    
     setTimeout(() => {
         document.querySelectorAll('.game-card, .about-container').forEach(el => {
             const rect = el.getBoundingClientRect();
